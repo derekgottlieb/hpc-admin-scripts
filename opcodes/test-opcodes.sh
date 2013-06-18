@@ -81,7 +81,7 @@ do
   [ "$VERBOSE" -gt 0 ] && printf "\tFound $op!"
   FOUND=$((FOUND + 1))
  fi
- printf "\n"
+ [ "$VERBOSE" -gt 0 ] && printf "\n"
 done
 
 printf "\tFound $FOUND different opcodes from $OPCODES\n\n"
