@@ -22,7 +22,7 @@ VERBOSE_FLAG=""
 BINARY=
 FAST_GREP=0
 
-while getopts "hvb:d:o:" OPTION
+while getopts "hvb:d:o:f" OPTION
 do
  case $OPTION in
   h)
