@@ -1,0 +1,6 @@
+crc32
+pcmpestri
+pcmpestrm
+pcmpistri
+pcmpistrm
+pcmpgtq

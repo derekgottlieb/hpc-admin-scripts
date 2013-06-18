@@ -1,0 +1,4 @@
+extrq
+insertq
+movntsd
+movntss

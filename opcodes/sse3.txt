@@ -1,0 +1,11 @@
+addsubpd
+addsubps
+haddpd
+haddps
+hsbubpd
+hsubps
+lddqu
+movddup
+movshdup
+movsldup
+fisttp
