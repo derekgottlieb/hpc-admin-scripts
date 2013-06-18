@@ -1,4 +1,8 @@
 #!/bin/bash
+# 2013-06-18: Derek Gottlieb (asndbg)
+# 
+# Generate objdump dump output for the specified binary and then run feed that
+# into the scanner for every opcode .txt file found in this directory.
 
 usage()
 {
@@ -8,6 +12,7 @@ usage()
  OPTIONS:
   -h       Show this message
   -v       Verbose
+  -f       Run "fast" version (single grep, less info about which opcodes found)
   -b file  Binary file
 EOF
 }
@@ -15,6 +20,7 @@ EOF
 VERBOSE=0
 VERBOSE_FLAG=""
 BINARY=
+FAST_GREP=0
 
 while getopts "hvb:d:o:" OPTION
 do
@@ -29,6 +35,9 @@ do
    ;;
   b)
    BINARY=$OPTARG
+   ;;
+  f)
+   FAST_GREP=1
    ;;
   ?)
    usage
@@ -48,7 +57,11 @@ objdump -d $BINARY > $OBJDUMP_FILE
 for OPCODE_FILE in *.txt
 do
  echo "Testing $f..."
- ./test-opcodes.sh $VERBOSE_FLAG -o $OPCODE_FILE -d $OBJDUMP_FILE
+ if [ $FAST_GREP -gt 0 ]; then
+  ./test-opcodes_fast.sh $VERBOSE_FLAG -o $OPCODE_FILE -d $OBJDUMP_FILE
+ else
+  ./test-opcodes.sh $VERBOSE_FLAG -o $OPCODE_FILE -d $OBJDUMP_FILE
+ fi
 done
 
 rm -f $OBJDUMP_FILE
