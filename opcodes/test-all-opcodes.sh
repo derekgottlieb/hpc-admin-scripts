@@ -56,7 +56,7 @@ objdump -d $BINARY > $OBJDUMP_FILE
 
 for OPCODE_FILE in *.txt
 do
- echo "Testing $f..."
+ echo "Testing $OPCODE_FILE..."
  if [ $FAST_GREP -gt 0 ]; then
   ./test-opcodes_fast.sh $VERBOSE_FLAG -o $OPCODE_FILE -d $OBJDUMP_FILE
  else
