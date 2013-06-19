@@ -1,0 +1,12 @@
+oadcastss
+vbroadcastsd
+vbroadcastf128
+vinsertf128
+vextractf128
+vmaskmovps
+vmaskmovpd
+vpermilps
+vpermilpd
+vperm2f128
+vzeroall
+vzeroupper

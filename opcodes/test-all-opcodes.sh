@@ -2,7 +2,7 @@
 # 2013-06-18: Derek Gottlieb (asndbg)
 # 
 # Generate objdump dump output for the specified binary and then run feed that
-# into the scanner for every opcode .txt file found in this directory.
+# into the scanner for every opcodes.* files found in this directory.
 
 usage()
 {
@@ -54,7 +54,7 @@ fi
 OBJDUMP_FILE=$(mktemp)
 objdump --no-show-raw-insn -d $BINARY > $OBJDUMP_FILE
 
-for OPCODE_FILE in *.txt
+for OPCODE_FILE in opcodes.*
 do
  echo "Testing $OPCODE_FILE..."
  if [ $FAST_GREP -gt 0 ]; then
