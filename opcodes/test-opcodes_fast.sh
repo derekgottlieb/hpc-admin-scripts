@@ -63,7 +63,7 @@ fi
 
 if [ -z $OBJDUMP_FILE ]; then 
  OBJDUMP_FILE=$(mktemp)
- objdump -d $BINARY > $OBJDUMP_FILE
+ objdump --no-show-raw-insn -d $BINARY > $OBJDUMP_FILE
 fi
 
 FOUND=0

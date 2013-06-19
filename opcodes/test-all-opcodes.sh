@@ -52,7 +52,7 @@ if [ -z $BINARY ]; then
 fi
 
 OBJDUMP_FILE=$(mktemp)
-objdump -d $BINARY > $OBJDUMP_FILE
+objdump --no-show-raw-insn -d $BINARY > $OBJDUMP_FILE
 
 for OPCODE_FILE in *.txt
 do

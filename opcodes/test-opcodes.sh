@@ -67,18 +67,23 @@ fi
 
 if [ -z $OBJDUMP_FILE ]; then 
  OBJDUMP_FILE=$(mktemp)
- objdump -d $BINARY > $OBJDUMP_FILE
+ objdump --no-show-raw-insn -d $BINARY > $OBJDUMP_FILE
 fi
 
 FOUND=0
 for op in $(cat $OPCODES)
 do
  [ "$VERBOSE" -gt 0 ] && printf "\tTesting $op..."
- op_found=$(grep -c "$op " $OBJDUMP_FILE)
- [ "$VERBOSE" -gt 0 ] && printf "$op_found"
+ op_found=$(grep "$op " $OBJDUMP_FILE | awk '{print $2}' | grep -c "^$op$")
+ #op_found=$(awk '/$op/ {print $2}' $OBJDUMP_FILE | sort | uniq | wc -l)
 
  if [ $op_found -gt 0 ]; then
   [ "$VERBOSE" -gt 0 ] && printf "\tFound $op!"
+  if [ "$VERBOSE" -gt 0 ]; then
+   matches=$(grep "$op " $OBJDUMP_FILE | awk '{print $2}' | grep "^$op$" | sort | uniq | sed ':a;N;$!ba;s/\n/,/g')
+   printf "\n\t\tMatches found: $matches"
+  fi
+
   FOUND=$((FOUND + 1))
  fi
  [ "$VERBOSE" -gt 0 ] && printf "\n"
