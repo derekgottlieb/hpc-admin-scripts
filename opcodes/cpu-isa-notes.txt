@@ -1,0 +1,13 @@
+SSE3 was introduced in Intel Prescott (Pentium 4 era) and should be supported
+by AMD CPUs since 2005.
+
+SSSE3 was introduced in Intel Woodcrest/Core (Xeon 5100/5300). Support was not
+added to AMD CPUs until Bulldozer (Opteron 6200).
+
+SSE4.1 was introduced in Intel Penryn, and SSE4.2 was introduced in Intel
+Nehalem. Support for these was not added to AMD CPUs until Bulldozer (Opteron
+6200).
+
+SSE4a was introduced in AMD Barcelona (K10 / Family 10h) and has never been
+added to Intel.
+
