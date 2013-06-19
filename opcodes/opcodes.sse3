@@ -2,10 +2,12 @@ addsubpd
 addsubps
 haddpd
 haddps
-hsbubpd
+hsubpd
 hsubps
 lddqu
 movddup
 movshdup
 movsldup
 fisttp
+monitor
+mwait
